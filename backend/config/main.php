@@ -11,6 +11,7 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
+    'defaultRoute' => 'site/index',
     'modules' => [],
     'components' => [
         'request' => [
@@ -48,15 +49,34 @@ return [
         ],
         'assetManager' => [
             'appendTimestamp' => true,
+            'bundles'=>[
+                'yii\web\JqueryAsset' => [
+                    'js' => [
+                        YII_ENV_DEV ? 'jquery.js' : 'jquery.min.js'
+                    ]
+                ],
+                'yii\bootstrap\BootstrapPluginAsset' => [
+                    'js' => [
+                        YII_ENV_DEV ? 'js/bootstrap.js' : 'js/bootstrap.min.js',
+                    ]
+                ],
+                // 'yii\bootstrap\BootstrapAsset' => [
+                //     'css' => [
+                //         '/themes/flatly/css/bootstrap.min.css'
+                //     ]
+                // ],
+            ]
         ],
-        /*
+        'errorHandler' => [
+            'errorAction' => 'site/error',
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+        
     ],
     'params' => $params,
 ];
