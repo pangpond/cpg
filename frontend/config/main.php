@@ -10,6 +10,9 @@ return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    // 'aliases'=>[
+    //     '@gentelella' => '@app/themes/gentelella',
+    // ],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [
@@ -36,6 +39,19 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'view' => [
+            'theme' => [
+                'basePath' => '@app/themes/gentelella',
+                'baseUrl' => '@app/themes/gentelella',
+                // 'pathMap' => [
+                //     '@app/views' => '@app/themes/gentelella/views',
+                // ],
+                'pathMap' => [
+                    '@app/views' => '@gentelella/views'
+                 ],
+            ],
+        ],
+        
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -46,4 +62,5 @@ return [
         */
     ],
     'params' => $params,
+    
 ];
